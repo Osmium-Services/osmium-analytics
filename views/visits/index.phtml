@@ -1,0 +1,95 @@
+<div class="d-flex justify-content-between align-items-center py-3 mb-4">
+    <h4 class="mb-0">
+        <span class="text-muted fw-light">Site / Traffic /</span> Visits
+    </h4>
+</div>
+
+<!-- Traffic Trend Chart -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div>
+                    <h5 class="mb-1"><i class="bx bx-line-chart me-2"></i>Traffic Trend</h5>
+                    <small class="text-muted">Daily hits over last 30 days</small>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="trafficTrendChart"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Device and Country Breakdown -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-1"><i class="bx bx-devices me-2"></i>Devices</h5>
+                <small class="text-muted">By hits, last 30 days</small>
+            </div>
+            <div class="card-body">
+                <?php if (!empty($admin['deviceBreakdown'])): ?>
+                    <div id="deviceBreakdownChart"></div>
+                <?php else: ?>
+                    <p class="text-muted mb-0">No device data recorded yet.</p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100">
+            <div class="card-header">
+                <h5 class="mb-1"><i class="bx bx-globe me-2"></i>Countries</h5>
+                <small class="text-muted">By hits, last 30 days</small>
+            </div>
+            <div class="card-body">
+                <?php if (!$admin['geoAvailable']): ?>
+                    <p class="text-muted mb-0">
+                        Country breakdown isn't set up on this environment yet — it needs a local
+                        GeoIP database. See <code>app/data/geoip/README.md</code>.
+                    </p>
+                <?php elseif (empty($admin['countryBreakdown'])): ?>
+                    <p class="text-muted mb-0">No country data recorded yet.</p>
+                <?php else: ?>
+                    <ul class="list-group list-group-flush">
+                        <?php foreach ($admin['countryTop'] as $row): ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <span><?= \htmlspecialchars($row['country_name'] ?? $row['country_code'] ?? '') ?></span>
+                                <span class="badge bg-label-primary"><?= \number_format((int)$row['total_hits']) ?></span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php if (!empty($admin['countryRest'])): ?>
+                        <div class="collapse" id="countryBreakdownRest">
+                            <ul class="list-group list-group-flush">
+                                <?php foreach ($admin['countryRest'] as $row): ?>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                        <span><?= \htmlspecialchars($row['country_name'] ?? $row['country_code'] ?? '') ?></span>
+                                        <span class="badge bg-label-primary"><?= \number_format((int)$row['total_hits']) ?></span>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 mt-2" style="cursor: pointer;"
+                            data-bs-toggle="collapse" data-bs-target="#countryBreakdownRest">
+                            <i class="bx bx-chevron-down" id="countryBreakdownRestIcon"></i>
+                            <span class="text-muted" id="countryBreakdownRestLabel"
+                                data-show-label="Show <?= \count($admin['countryRest']) ?> more"
+                                data-hide-label="Only top <?= \count($admin['countryTop']) ?>">Show <?= \count($admin['countryRest']) ?> more</span>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+window.visitsConfig = {
+    dailyTotals: <?= \json_encode($admin['dailyTotals']) ?>,
+    deviceBreakdown: <?= \json_encode($admin['deviceBreakdown']) ?>
+};
+</script>
+<script src="/assets/services/osmium-analytics/visits.js<?= $adminAssetVersion('/assets/services/osmium-analytics/visits.js') ?>"></script>

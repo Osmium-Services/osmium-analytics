@@ -1,0 +1,90 @@
+{
+    "id": "osmium-analytics",
+    "name": "Osmium Analytics",
+    "version": "1.0.0",
+    "description": "Cookieless, first-party visitor statistics: visits, top pages, referrers, device and country, with a retention setting",
+    "category": "marketing-analytics",
+    "author": {
+        "name": "Gavin Cox"
+    },
+    "license": "proprietary",
+    "requires": {
+        "osmium": ">=1.0.0",
+        "php": ">=8.1",
+        "services": []
+    },
+    "autoload": [
+        "models"
+    ],
+    "migrations": "migrations/",
+    "hooks": {
+        "page.viewed": [
+            "Osmium\\Services\\OsmiumAnalytics\\Models\\Tracker::pageViewed"
+        ]
+    },
+    "admin": {
+        "menu": {
+            "section": "Traffic",
+            "items": [
+                {
+                    "id": "visits",
+                    "label": "Visits",
+                    "placement": "traffic",
+                    "route": "admin/traffic/visits",
+                    "activePattern": "admin/traffic/visits",
+                    "role": null
+                },
+                {
+                    "id": "page-hits",
+                    "label": "Top Pages",
+                    "placement": "traffic",
+                    "route": "admin/traffic/page-hits",
+                    "activePattern": "admin/traffic/page-hits",
+                    "role": null
+                },
+                {
+                    "id": "referrers",
+                    "label": "Top Referrers",
+                    "placement": "traffic",
+                    "route": "admin/traffic/referrers",
+                    "activePattern": "admin/traffic/referrers",
+                    "role": null
+                },
+                {
+                    "id": "settings",
+                    "label": "Osmium Analytics",
+                    "icon": "bx bx-line-chart",
+                    "route": "admin/settings/osmium-analytics",
+                    "activePattern": "admin/settings/osmium-analytics",
+                    "role": "admin"
+                }
+            ]
+        },
+        "routes": {
+            "admin/traffic/visits": {
+                "controller": "controllers/VisitsController.php",
+                "class": "Osmium\\Services\\OsmiumAnalytics\\Controllers\\VisitsController",
+                "method": "index",
+                "title": "Visits"
+            },
+            "admin/traffic/page-hits": {
+                "controller": "controllers/PageHitsController.php",
+                "class": "Osmium\\Services\\OsmiumAnalytics\\Controllers\\PageHitsController",
+                "method": "index",
+                "title": "Page Hits"
+            },
+            "admin/traffic/referrers": {
+                "controller": "controllers/ReferrersController.php",
+                "class": "Osmium\\Services\\OsmiumAnalytics\\Controllers\\ReferrersController",
+                "method": "index",
+                "title": "Referrers"
+            },
+            "admin/settings/osmium-analytics": {
+                "controller": "controllers/SettingsController.php",
+                "class": "Osmium\\Services\\OsmiumAnalytics\\Controllers\\SettingsController",
+                "method": "index",
+                "title": "Osmium Analytics"
+            }
+        }
+    }
+}
