@@ -4,14 +4,14 @@ Osmium Analytics (a Store service) shows a country breakdown in admin and needs 
 bundled with the repo — MaxMind's license doesn't allow redistributing it,
 and it needs a (free) personal account to download.
 
-## Staging and live: automatic
+## Staging and live: automatic (per site)
 
-`deploy-staging.yml` downloads a fresh copy from MaxMind on every deploy
-(using the `MAXMIND_LICENSE_KEY` repo secret) and rsyncs it in, so it stays
-current with no manual step. `deploy-live.yml` then carries it over from
-staging along with everything else. If the secret isn't set, or the download
-fails for any reason, the step skips quietly and the deploy still succeeds —
-country tracking just stays empty until it's in place.
+This template has no deploy workflows. A site that wants country data adds a step to its own
+`deploy-staging.yml` (see `solargo2`, `allfast` or `notescheck`). That step downloads the database from
+MaxMind using the `MAXMIND_LICENSE_KEY` repo secret, caches it by ISO week (so a push in a new week fetches
+a fresh copy and other pushes reuse it, which keeps clear of MaxMind's daily download limit), and rsyncs it
+in. `deploy-live.yml` carries it over from staging with everything else. If the secret isn't set, or the
+download fails, the step skips quietly and the deploy still succeeds. Country tracking just stays empty.
 
 To set it up: create a free account at
 https://www.maxmind.com/en/geolite2/signup, generate a license key, and add
