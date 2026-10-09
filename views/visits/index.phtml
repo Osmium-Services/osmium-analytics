@@ -86,7 +86,7 @@
     </div>
 </div>
 
-<script>
+<script nonce="<?= $cspNonce ?? '' ?>">
 window.visitsConfig = {
     dailyTotals: <?= \json_encode($admin['dailyTotals']) ?>,
     deviceBreakdown: <?= \json_encode($admin['deviceBreakdown']) ?>

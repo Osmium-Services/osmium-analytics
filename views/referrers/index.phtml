@@ -134,7 +134,7 @@ require_once 'app/modules/admin/core/ListView.php';
     'isAdmin' => $admin['isAdmin'],
 ]) ?>
 
-<script>
+<script nonce="<?= $cspNonce ?? '' ?>">
 // Data for charts (needed by external JS)
 window.topReferrersData = {
     top5: <?= \json_encode(\array_slice($admin['topReferrers'], 0, 5)) ?>,

@@ -121,7 +121,7 @@ require_once 'app/modules/admin/core/ListView.php';
     'topPagesDayRanges' => $admin['topPagesDayRanges'],
 ]) ?>
 
-<script>
+<script nonce="<?= $cspNonce ?? '' ?>">
 window.pageHitsConfig = {
     topPages: <?= \json_encode(\array_slice($admin['topPages'], 0, 5)) ?>,
     totalHits: <?= (int)$admin['totalHits'] ?>

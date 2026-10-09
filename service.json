@@ -1,7 +1,7 @@
 {
     "id": "osmium-analytics",
     "name": "Osmium Analytics",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Cookieless, first-party visitor statistics: visits, top pages, referrers, device and country, with a retention setting",
     "category": "marketing-analytics",
     "author": {
