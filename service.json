@@ -1,7 +1,7 @@
 {
     "id": "osmium-analytics",
     "name": "Osmium Analytics",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "description": "Cookieless, first-party visitor statistics: visits, top pages, referrers, device and country, with a retention setting",
     "category": "marketing-analytics",
     "author": {
@@ -20,6 +20,9 @@
     "hooks": {
         "page.viewed": [
             "Osmium\\Services\\OsmiumAnalytics\\Models\\Tracker::pageViewed"
+        ],
+        "mcp.tools": [
+            "Osmium\\Services\\OsmiumAnalytics\\Models\\AnalyticsMcp::tools"
         ]
     },
     "admin": {
