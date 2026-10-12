@@ -88,8 +88,8 @@
 
 <script nonce="<?= $cspNonce ?? '' ?>">
 window.visitsConfig = {
-    dailyTotals: <?= \json_encode($admin['dailyTotals']) ?>,
-    deviceBreakdown: <?= \json_encode($admin['deviceBreakdown']) ?>
+    dailyTotals: <?= \json_encode($admin['dailyTotals'], JSON_HEX_TAG | JSON_HEX_AMP) ?>,
+    deviceBreakdown: <?= \json_encode($admin['deviceBreakdown'], JSON_HEX_TAG | JSON_HEX_AMP) ?>
 };
 </script>
 <script src="/assets/services/osmium-analytics/visits.js<?= $adminAssetVersion('/assets/services/osmium-analytics/visits.js') ?>"></script>

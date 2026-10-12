@@ -123,7 +123,7 @@ require_once 'app/modules/admin/core/ListView.php';
 
 <script nonce="<?= $cspNonce ?? '' ?>">
 window.pageHitsConfig = {
-    topPages: <?= \json_encode(\array_slice($admin['topPages'], 0, 5)) ?>,
+    topPages: <?= \json_encode(\array_slice($admin['topPages'], 0, 5), JSON_HEX_TAG | JSON_HEX_AMP) ?>,
     totalHits: <?= (int)$admin['totalHits'] ?>
 };
 </script>

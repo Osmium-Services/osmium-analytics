@@ -137,9 +137,9 @@ require_once 'app/modules/admin/core/ListView.php';
 <script nonce="<?= $cspNonce ?? '' ?>">
 // Data for charts (needed by external JS)
 window.topReferrersData = {
-    top5: <?= \json_encode(\array_slice($admin['topReferrers'], 0, 5)) ?>,
+    top5: <?= \json_encode(\array_slice($admin['topReferrers'], 0, 5), JSON_HEX_TAG | JSON_HEX_AMP) ?>,
     totalHits: <?= (int)$admin['totalReferralHits'] ?>,
-    daily: <?= \json_encode($admin['dailyReferrals']) ?>
+    daily: <?= \json_encode($admin['dailyReferrals'], JSON_HEX_TAG | JSON_HEX_AMP) ?>
 };
 </script>
 <script src="/assets/admin/js/list-view.js<?= $adminAssetVersion('/assets/admin/js/list-view.js') ?>"></script>
