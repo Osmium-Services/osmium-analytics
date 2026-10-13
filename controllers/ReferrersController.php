@@ -30,7 +30,7 @@ class ReferrersController extends AdminController
             );
         }
 
-        require_once 'app/modules/admin/core/ListView.php'; // list definitions use ListView helpers
+        require_once 'app/admin/core/ListView.php'; // list definitions use ListView helpers
         $this->data['admin']['lists'] = require __DIR__ . '/../lists/referrers.php';
         $this->data['admin']['topReferrers'] = $formattedReferrers;
         $this->data['admin']['totalReferralHits'] = $stats['totalHits'];

@@ -41,7 +41,7 @@ class PageHitsController extends AdminController
             $rank++;
         }
 
-        require_once 'app/modules/admin/core/ListView.php'; // list definitions use ListView helpers
+        require_once 'app/admin/core/ListView.php'; // list definitions use ListView helpers
         $this->data['admin']['lists'] = require __DIR__ . '/../lists/page-hits.php';
         $this->data['admin']['topPages'] = $formattedPages;
         $this->data['admin']['topPagesDays'] = $days;
