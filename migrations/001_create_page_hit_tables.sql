@@ -47,6 +47,6 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}page_hits` (
   KEY `idx_hit_date` (`hit_date`),
   KEY `idx_page_url_id` (`page_url_id`),
   KEY `fk_page_hits_referrer` (`referrer_id`),
-  CONSTRAINT `fk_page_hits_referrer` FOREIGN KEY (`referrer_id`) REFERENCES `{PREFIX}page_hit_referrers` (`id`),
-  CONSTRAINT `fk_page_hits_url` FOREIGN KEY (`page_url_id`) REFERENCES `{PREFIX}page_hit_urls` (`id`) ON DELETE CASCADE
+  CONSTRAINT `{PREFIX}fk_page_hits_referrer` FOREIGN KEY (`referrer_id`) REFERENCES `{PREFIX}page_hit_referrers` (`id`),
+  CONSTRAINT `{PREFIX}fk_page_hits_url` FOREIGN KEY (`page_url_id`) REFERENCES `{PREFIX}page_hit_urls` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
