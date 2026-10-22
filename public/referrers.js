@@ -51,12 +51,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             value: {
                                 fontSize: '18px',
                                 fontWeight: 600,
+                                color: config.colors.headingColor,
                                 formatter: val => val + ' hits'
                             },
                             total: {
                                 show: true,
                                 label: 'Total',
                                 fontSize: '12px',
+                                color: config.colors.headingColor,
                                 formatter: w => w.globals.seriesTotals.reduce((a, b) => a + b, 0)
                             }
                         }
@@ -110,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         legend: {
             show: true,
+            labels: { colors: config.colors.headingColor },
             position: 'top',
             horizontalAlign: 'right',
             fontSize: '12px',
