@@ -17,7 +17,7 @@ return [
         'icon' => 'bx-trophy',
         'noun' => ['page', 'pages'],
         'order' => null,
-        'badgeLabel' => 'top 100',
+        'subtitle' => 'Top 100',
         'emptyText' => 'No page hits recorded yet. Visit some pages on the front-end to start tracking.',
         'filters' => [
             [

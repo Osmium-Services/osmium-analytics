@@ -14,7 +14,7 @@ return [
         'icon' => 'bx-link',
         'noun' => ['referrer', 'referrers'],
         'order' => null,
-        'badgeLabel' => 'top 100',
+        'subtitle' => 'Top 100',
         'emptyText' => 'No referral data recorded yet. External links to your site will appear here.',
         'columns' => [
             [
