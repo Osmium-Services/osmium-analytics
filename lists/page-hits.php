@@ -50,6 +50,7 @@ return [
             [
                 'key' => 'days_active_label',
                 'label' => 'Days Active',
+                'hideBelow' => 'md',
                 'type' => 'text',
                 'small' => true,
                 'nowrap' => true,
@@ -58,6 +59,7 @@ return [
             [
                 'key' => 'avg_per_day',
                 'label' => 'Avg/Day',
+                'hideBelow' => 'md',
                 'type' => 'text',
                 'muted' => true,
                 'nowrap' => true,
@@ -66,6 +68,7 @@ return [
             [
                 'key' => 'last_hit_formatted',
                 'label' => 'Last Hit',
+                'hideBelow' => 'md',
                 'type' => 'text',
                 'small' => true,
                 'nowrap' => true,

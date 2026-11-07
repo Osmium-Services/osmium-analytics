@@ -40,6 +40,7 @@ return [
             [
                 'key' => 'pagesLabel',
                 'label' => 'Pages',
+                'hideBelow' => 'md',
                 'type' => 'text',
                 'small' => true,
                 'nowrap' => true,
@@ -48,6 +49,7 @@ return [
             [
                 'key' => 'daysLabel',
                 'label' => 'Days Active',
+                'hideBelow' => 'md',
                 'type' => 'text',
                 'small' => true,
                 'nowrap' => true,
@@ -56,6 +58,7 @@ return [
             [
                 'key' => 'lastSeenFormatted',
                 'label' => 'Last Seen',
+                'hideBelow' => 'md',
                 'type' => 'text',
                 'small' => true,
                 'nowrap' => true,
