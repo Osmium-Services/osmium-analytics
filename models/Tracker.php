@@ -149,7 +149,9 @@ class Tracker
             && $referrerHost !== $ownHost
             && !\str_ends_with($referrerHost, '.' . $ownHost); // Only external referrers
 
-        return $isExternal ? \mb_strtolower($referrerHost) : null;
+        $validHostname = $isExternal && \strlen($referrerHost) <= 253 && \preg_match('/^[a-z0-9]([a-z0-9.-]*[a-z0-9])?\.[a-z0-9-]{2,}$/i', $referrerHost) === 1; // Junk hosts never become rows
+
+        return $validHostname ? \mb_strtolower($referrerHost) : null;
     }
 
     private static function checkAndMarkUniqueVisitor(string $pageUrl, ?string $referrerDomain): bool
