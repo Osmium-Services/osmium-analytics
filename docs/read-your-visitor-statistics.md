@@ -1,6 +1,7 @@
 ---
 title: Read your visitor statistics
 tags: analytics, visitors, traffic, top pages, referrers, devices, countries, hits, statistics
+page: admin/traffic/visits, admin/traffic/page-hits, admin/traffic/referrers, admin/settings/osmium-analytics
 ---
 
 **Osmium Analytics** counts visits to your site without cookies. It records page views, where visitors came from, device type and country. IP addresses are never stored.
